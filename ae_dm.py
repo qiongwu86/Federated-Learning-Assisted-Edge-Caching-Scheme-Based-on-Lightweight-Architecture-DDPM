@@ -69,9 +69,6 @@ if __name__ == '__main__':
         with torch.no_grad():
             generated_data_original_dim = train_ae.decoder(generated_data)
         generated_ratings = torch.sum(generated_data_original_dim, dim=0)
-        cache_hit_ratio_500.append(cache_efficiency3(generated_ratings,test_idx,sample,500))
-        cache_hit_ratio_100.append(cache_efficiency3(generated_ratings,test_idx,sample,100))
-        print("cache_hit_ratio_500_now:",cache_hit_ratio_500[-1])
         if idx == args.epochs:
             generated_data = generator_data(gl_dm, 1000)
             train_ae.eval()
