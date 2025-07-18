@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import torch
-from data_set import DataSet
+from data_set import DataSet,convert
 from user_info import UserInfo
 import utils
 from collections import Counter
@@ -107,6 +107,18 @@ def get_dataset(args):
         user_manager.save_user_info(user_info, 'user_info')
 
     return ratings, user_info
+
+
+def data_pros(users_group_train,sample,client_num):
+    Train_data1 = []
+    for i in range(client_num):
+        num = np.random.randint(20000, 25000)
+        train_idx = users_group_train[i][:num]
+        train_data = convert(sample[train_idx], int(max(sample[:, 1])))
+        train_data = torch.Tensor(train_data).float()
+        Train_data1.append(train_data)
+    return Train_data1
+
 
 def cache_efficiency3(generated_ratings,test_idx,sample,k):
 
