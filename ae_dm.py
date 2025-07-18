@@ -3,7 +3,7 @@ import torch
 from itertools import chain
 from options import args_parser
 from torch.utils.data import DataLoader
-from dataset_processing import cache_efficiency, sampling_mobility,cache_efficiency3,idx_train3,request_delay2
+from dataset_processing import cache_efficiency, sampling_mobility,cache_efficiency3,idx_train3,request_delay2,data_pros
 from data_set import convert
 from model_ddpm import LightweightUNet1D, GaussianMultinomialDiffusion
 from model_ae import generator_data, AutoEncoder,train_autoencoder1
@@ -36,13 +36,7 @@ if __name__ == '__main__':
 
     train_idx1 = idx_train3(user_request_num)
     gl_ae = AutoEncoder(input_dim=3952, hidden_dim=100, latent_dim=in_out_dim)
-    Train_data1 = []
-    for i in range(client_num):
-        num = np.random.randint(30000,40000)
-        train_idx = users_group_train[i][:num]
-        train_data = convert(sample[train_idx], int(max(sample[:, 1])))
-        train_data = torch.Tensor(train_data).float()
-        Train_data1.append(train_data)
+    Train_data1 = data_pros(users_group_train,sample,client_num)
     cache_hit_ratio_500 = []
     cache_hit_ratio_100 = []
     client_epoch_time_all = []
