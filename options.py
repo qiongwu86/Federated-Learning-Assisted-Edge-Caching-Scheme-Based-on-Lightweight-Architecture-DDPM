@@ -26,7 +26,7 @@ def args_parser():
                         help="in_out_dim")
     parser.add_argument('--batch_size', type=int, default=64,
                         help="local batch size: B")
-    parser.add_argument('--clients_num', type=int, default=5,
+    parser.add_argument('--clients_num', type=int, default=20,
                         help="number of clients: K")
     parser.add_argument('--cachesize', type=list, default=[50, 100, 150, 200, 250, 300, 350, 400, 450, 500],
                         help="size of cache: CS")
