@@ -112,8 +112,7 @@ def get_dataset(args):
 def data_pros(users_group_train,sample,client_num):
     Train_data1 = []
     for i in range(client_num):
-        num = np.random.randint(20000, 25000)
-        train_idx = users_group_train[i][:num]
+        train_idx = users_group_train[i]
         train_data = convert(sample[train_idx], int(max(sample[:, 1])))
         train_data = torch.Tensor(train_data).float()
         Train_data1.append(train_data)
