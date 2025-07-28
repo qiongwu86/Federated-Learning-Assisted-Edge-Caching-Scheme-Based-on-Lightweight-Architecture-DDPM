@@ -73,8 +73,6 @@ if __name__ == '__main__':
             request_number = sum(user_request_num)/len(user_request_num)
             v2i_rate_avg = sum(v2i_rate)/len(v2i_rate)
             ae_am_delay_100 = request_delay2(cache_hit_ratio_100, request_number, v2i_rate_avg)
-            print('LDDPM_cache_efficiency:',CACHE_HIT_RATIO_all)
-
         if idx > args.epochs:
             break
 
